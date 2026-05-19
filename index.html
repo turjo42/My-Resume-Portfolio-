@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ridu | Software Engineer Intern</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0b0b0b;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#00e1ff18;
+      filter:blur(120px);
+      top:-150px;
+      right:-100px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:#ffffff10;
+      filter:blur(100px);
+      bottom:-120px;
+      left:-100px;
+      z-index:-1;
+    }
+
+    nav{
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      backdrop-filter:blur(10px);
+      background:#00000050;
+      z-index:1000;
+      border-bottom:1px solid #1c1c1c;
+    }
+
+    .logo{
+      font-size:1.2rem;
+      font-weight:700;
+      color:#00e1ff;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      transition:.3s;
+    }
+
+    nav a:hover{
+      color:#00e1ff;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:120px 10%;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h3{
+      color:#00e1ff;
+      margin-bottom:10px;
+      font-weight:500;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#c7c7c7;
+      margin-bottom:30px;
+      max-width:500px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 24px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .primary{
+      background:#00e1ff;
+      color:black;
+    }
+
+    .secondary{
+      border:1px solid #2b2b2b;
+      color:white;
+      background:#151515;
+    }
+
+    .btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 25px #00e1ff25;
+    }
+
+    .hero-card{
+      background:linear-gradient(145deg,#131313,#1d1d1d);
+      border:1px solid #2a2a2a;
+      border-radius:24px;
+      padding:30px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 10px 40px #00000050;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:#00e1ff25;
+      border-radius:50%;
+      top:-60px;
+      right:-60px;
+      filter:blur(20px);
+    }
+
+    .code{
+      font-family:monospace;
+      color:#d7d7d7;
+      line-height:2;
+    }
+
+    .blue{
+      color:#00e1ff;
+    }
+
+    .purple{
+      color:#b388ff;
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .section-title{
+      font-size:2.3rem;
+      margin-bottom:15px;
+    }
+
+    .section-sub{
+      color:#b9b9b9;
+      margin-bottom:40px;
+    }
+
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:20px;
+    }
+
+    .skill{
+      background:#141414;
+      border:1px solid #252525;
+      padding:25px;
+      border-radius:18px;
+      text-align:center;
+      transition:.3s;
+    }
+
+    .skill:hover{
+      transform:translateY(-6px);
+      border-color:#00e1ff;
+      background:#191919;
+    }
+
+    .skill h3{
+      margin-top:10px;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .project{
+      background:#141414;
+      border:1px solid #252525;
+      padding:25px;
+      border-radius:22px;
+      transition:.3s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project:hover{
+      transform:translateY(-8px);
+      border-color:#00e1ff;
+    }
+
+    .project::after{
+      content:"↗";
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:1.2rem;
+      color:#00e1ff;
+    }
+
+    .project p{
+      color:#bdbdbd;
+      margin-top:10px;
+    }
+
+    .contact-box{
+      background:linear-gradient(145deg,#101010,#191919);
+      border:1px solid #252525;
+      padding:40px;
+      border-radius:24px;
+      text-align:center;
+    }
+
+    .contact-box p{
+      color:#c9c9c9;
+      margin:10px 0;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#8d8d8d;
+      border-top:1px solid #1d1d1d;
+    }
+
+    .typing{
+      color:#00e1ff;
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      nav{
+        padding:20px 6%;
+      }
+
+      section{
+        padding:80px 6%;
+      }
+    }
+
+    @media(max-width:600px){
+
+      nav ul{
+        display:none;
+      }
+
+      .hero-text h1{
+        font-size:2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Ridu.dev</div>
+
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+
+    <div class="hero">
+
+      <div class="hero-text">
+
+        <h3>👋 Hello There</h3>
+
+        <h1>
+          Future <span class="typing"></span>
+        </h1>
+
+        <p>
+          I'm a CSE student passionate about building modern web
+          applications, solving problems, and turning caffeine into code ☕
+          Currently looking for internship opportunities where I can grow
+          as a software engineer.
+        </p>
+
+        <div class="buttons">
+          <a href="#contact" class="btn primary">Hire Me</a>
+          <a href="#projects" class="btn secondary">View Projects</a>
+        </div>
+
+      </div>
+
+      <div class="hero-card">
+
+        <div class="code">
+          <span class="purple">const</span> developer = { <br><br>
+
+          &nbsp;&nbsp;name:
+          <span class="blue">"Ridu"</span>,<br>
+
+          &nbsp;&nbsp;role:
+          <span class="blue">"Software Engineer Intern"</span>,<br>
+
+          &nbsp;&nbsp;skills: [
+          <span class="blue">"HTML"</span>,
+          <span class="blue">"CSS"</span>,
+          <span class="blue">"JavaScript"</span>
+          ],<br>
+
+          &nbsp;&nbsp;currentlyLearning:
+          <span class="blue">"Full Stack Development"</span>,<br>
+
+          &nbsp;&nbsp;status:
+          <span class="blue">"Open to Internship"</span><br><br>
+
+          };
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <section id="skills">
+
+    <h2 class="section-title">Skills ⚡</h2>
+    <p class="section-sub">
+      Technologies I use to build and learn cool things.
+    </p>
+
+    <div class="skills">
+
+      <div class="skill">
+        <h3>HTML5/CSS3</h3>
+      </div>
+
+      <div class="skill">
+        <h3>Python</h3>
+      </div>
+
+      <div class="skill">
+        <h3>JavaScript</h3>
+      </div>
+
+      <div class="skill">
+        <h3>C/C++</h3>
+      </div>
+
+      <div class="skill">
+        <h3>GitHub</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="projects">
+
+    <h2 class="section-title">Projects 🚀</h2>
+
+    <p class="section-sub">
+      A few things I've built while exploring software development.
+    </p>
+
+    <div class="projects">
+
+      <div class="project">
+        <h3>Student Management System</h3>
+
+        <p>
+          A CRUD-based web app to manage student records with local storage.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Task Tracker App</h3>
+
+        <p>
+          Minimal productivity app for managing daily tasks and goals.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Personal Portfolio</h3>
+
+        <p>
+          Responsive portfolio website designed with modern UI principles.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <div class="contact-box">
+
+      <h2 class="section-title">Let's Connect 🌙</h2>
+
+      <p>Email: fi.redham16@gmail.com</p>
+      <p>GitHub: github.com/redhain</p>
+      <p>LinkedIn: linkedin.com/faizul-islam-redham</p>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Ridu • Built with HTML, CSS & JavaScript
+  </footer>
+
+  <script>
+
+    const words = [
+      "Software Engineer",
+      "Backend Developer",
+      "Problem Solver",
+      "CSE Student"
+    ];
+
+    let i = 0;
+
+    const typing = document.querySelector(".typing");
+
+    function changeText(){
+      typing.textContent = words[i];
+      i = (i + 1) % words.length;
+    }
+
+    changeText();
+
+    setInterval(changeText, 2000);
+
+  </script>
+
+</body>
+</html>
